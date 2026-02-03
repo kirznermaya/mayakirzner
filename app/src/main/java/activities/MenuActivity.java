@@ -1,4 +1,5 @@
 package activities;
+// jygjughkidt
 
 import android.os.Bundle;
 
@@ -24,6 +25,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.example.mayakirzner.R;
 
 public class MenuActivity extends AppCompatActivity {
+    // mhyfgdj hdfndxy,ktc f fjlxy
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     @Override
