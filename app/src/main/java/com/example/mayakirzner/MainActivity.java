@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+import android.util.Log;
+import android.widget.EditText;
+import com.example.mayakirzner.servises.SignalRService;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,6 +16,8 @@ import com.example.mayakirzner.models.TicTacToeModel;
 
 public class MainActivity extends AppCompatActivity {
     private TicTacToeModel model;
+    private final SignalRService signalRService = new SignalRService();
+    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,4 +63,37 @@ public class MainActivity extends AppCompatActivity {
                     button.setText("");
                 }
             }
+    public void onConnectClick(View view) {
+        EditText ipEdit = findViewById(R.id.editServerIP);
+        String ip = ipEdit.getText().toString().trim();
+        if (ip.isEmpty()) {
+            // Fall back to hint if empty
+            ip = ipEdit.getHint() != null ? ipEdit.getHint().toString() : "109.226.44.197";
+        }
+
+        String finalIp = ip;
+        Toast.makeText(this, "Connecting to " + finalIp + ":8081", Toast.LENGTH_SHORT).show();
+        signalRService.connect(finalIp, new SignalRService.Listener() {
+            @Override
+            public void onConnected() {
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "Connected to hub", Toast.LENGTH_SHORT).show());
+            }
+
+            @Override
+            public void onDisconnected(Throwable error) {
+                runOnUiThread(() -> Toast.makeText(MainActivity.this, "Hub error: " + (error != null ? error.getMessage() : "unknown"), Toast.LENGTH_LONG).show());
+            }
+
+            @Override
+            public void onReceiveMessage(String user, String message) {
+                Log.d(TAG, "we got " + message + " from " + user);
+            }
+
+            @Override
+            public void onReceiveKey(String key) {
+                // בהמשך נטפל כאן בקבלת מידע מהשרת
+                Log.d(TAG, "HandleOthersKey: " + key);
+            }
+        });
+    }
 }
