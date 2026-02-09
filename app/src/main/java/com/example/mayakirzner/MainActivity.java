@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
 
               if (model.isLegal(row, col)) {
                   model.makeMove(row, col);
-                  button.setText(model.getCurrentPlayer());
-
+                  String player = model.getCurrentPlayer();
+                  button.setText(player);
+                  // Send the move to the hub: "row,col,player"
+                  signalRService.sendMove(row, col, player);
                   if (model.checkWin()) {
                       model.changePlayer();
                       Toast.makeText(this, "Player " + model.getCurrentPlayer() + " wins!", Toast.LENGTH_SHORT).show();
