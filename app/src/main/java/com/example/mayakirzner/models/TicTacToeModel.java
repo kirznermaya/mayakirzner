@@ -49,6 +49,13 @@ public class TicTacToeModel {
         }
         currentPlayer = "X";
     }
+    public boolean setMove(int row, int col, String player) {
+        if (isLegal(row, col)) {
+            board[row][col] = player;
+            return true;
+        }
+        return false;
+    }
 
     public String getCurrentPlayer() {
         return currentPlayer;

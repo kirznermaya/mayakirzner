@@ -95,7 +95,55 @@ public class MainActivity extends AppCompatActivity {
             public void onReceiveKey(String key) {
                 // בהמשך נטפל כאן בקבלת מידע מהשרת
                 Log.d(TAG, "HandleOthersKey: " + key);
+                // Expecting format: "row,col,player"
+                String[] parts = key.split(",");
+                if (parts.length != 3) {
+                    return;
+                }
+                try {
+                    int r = Integer.parseInt(parts[0].trim());
+                    int c = Integer.parseInt(parts[1].trim());
+                    String p = parts[2].trim();
+
+                    runOnUiThread(() -> {
+                        // Only apply if the cell is still empty
+                        if (model.isLegal(r, c)) {
+                            boolean applied = model.setMove(r, c, p);
+                            if (applied) {
+                                int id = idFor(r, c);
+                                if (id != 0) {
+                                    Button target = findViewById(id);
+                                    if (target != null) {
+                                        target.setText(p);
+                                    }
+                                    // Optional: win/tie checks would go here if implemented
+
+                                    // Keep turn alternation consistent with local logic
+                                }
+                                model.changePlayer();
+                            }
+                        }
+                    });
+                } catch (NumberFormatException e) {
+                    Log.w(TAG, "Bad key format: " + key);
+                }
             }
         });
     }
+
+
+
+    private int idFor(int row, int col) {
+        if (row == 0 && col == 0) return R.id.button00;
+        if (row == 0 && col == 1) return R.id.button01;
+        if (row == 0 && col == 2) return R.id.button02;
+        if (row == 1 && col == 0) return R.id.button10;
+        if (row == 1 && col == 1) return R.id.button11;
+        if (row == 1 && col == 2) return R.id.button12;
+        if (row == 2 && col == 0) return R.id.button20;
+        if (row == 2 && col == 1) return R.id.button21;
+        if (row == 2 && col == 2) return R.id.button22;
+        return 0;
+    }
+
 }
