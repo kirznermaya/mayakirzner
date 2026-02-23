@@ -5,6 +5,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_local_game">Local Game</string>
     <string name="menu_profile">Profile</string>
+    <string name="menu_rtdb_prep">RTDB Game (Prep)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

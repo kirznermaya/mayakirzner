@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.example.mayakirzner.HomeFragment;
+import com.example.mayakirzner.Main2Activity;
 import com.example.mayakirzner.MainActivity;
 import com.example.mayakirzner.ProfileFragment;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -54,6 +55,8 @@ public class MenuActivity extends AppCompatActivity {
                 showFragment(new HomeFragment());
             } else if (item.getItemId() == R.id.nav_local_game) {
                 startActivity(new Intent(this, MainActivity.class));
+            } else if (item.getItemId() == R.id.nav_rtdb_prep) {
+                startActivity(new Intent(this, Main2Activity.class));
             } else if (item.getItemId() == R.id.nav_profile) {
                 showFragment(new ProfileFragment());
             }

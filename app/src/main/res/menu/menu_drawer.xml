@@ -8,6 +8,9 @@
     <item
         android:id="@+id/nav_local_game"
         android:title="@string/menu_local_game" />
+    <item
+        android:id="@+id/nav_rtdb_prep"
+        android:title="@string/menu_rtdb_prep" />
 
     <item
         android:id="@+id/nav_profile"
