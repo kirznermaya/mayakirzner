@@ -56,7 +56,7 @@ public class MenuActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.nav_local_game) {
                 startActivity(new Intent(this, MainActivity.class));
             } else if (item.getItemId() == R.id.nav_rtdb_prep) {
-                startActivity(new Intent(this, Main2Activity.class));
+                startActivity(new Intent(this, Main2Activity.class)); //Запуск нового экрана
             } else if (item.getItemId() == R.id.nav_profile) {
                 showFragment(new ProfileFragment());
             }

@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String finalIp = ip;
-        Toast.makeText(this, "Connecting to " + finalIp + ":8081", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Connecting to " + finalIp + ":80", Toast.LENGTH_SHORT).show();
         signalRService.connect(finalIp, new SignalRService.Listener() {
             @Override
             public void onConnected() {
