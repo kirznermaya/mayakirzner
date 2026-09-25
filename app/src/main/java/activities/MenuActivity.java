@@ -2,6 +2,10 @@ package activities;
 
 import android.os.Bundle;
 
+import android.content.SharedPreferences;
+import com.example.mayakirzner.servises.FBRef;
+import activities.LoginActivity;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -59,7 +63,9 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(this, Main2Activity.class)); //Запуск нового экрана
             } else if (item.getItemId() == R.id.nav_profile) {
                 showFragment(new ProfileFragment());
-            }
+            } else if (item.getItemId() == R.id.nav_logout) {
+            logoutAndOpenLogin();
+        }
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
@@ -67,6 +73,17 @@ public class MenuActivity extends AppCompatActivity {
             showFragment(new HomeFragment());
             navigationView.setCheckedItem(R.id.nav_home);
         }
+    }
+    private void logoutAndOpenLogin() {
+        SharedPreferences settings = getSharedPreferences("PREFS_NAME", MODE_PRIVATE);
+        settings.edit().putBoolean("stayConnect", false).apply();
+
+        FBRef.refAuth.signOut();
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

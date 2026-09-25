@@ -15,6 +15,9 @@
     <item
         android:id="@+id/nav_profile"
         android:title="@string/menu_profile" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="@string/menu_logout" />
 
 
 </menu>
