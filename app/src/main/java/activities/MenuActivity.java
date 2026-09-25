@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.content.SharedPreferences;
 import com.example.mayakirzner.servises.FBRef;
+import com.example.mayakirzner.databinding.ActivityMenuBinding;
 import activities.LoginActivity;
 
 import androidx.activity.EdgeToEdge;
@@ -32,15 +33,17 @@ import com.google.android.material.navigation.NavigationView;
 import com.example.mayakirzner.R;
 
 public class MenuActivity extends AppCompatActivity {
-
+    private ActivityMenuBinding binding;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle drawerToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
-        drawerLayout = findViewById(R.id.drawer_layout);
-        MaterialToolbar toolbar = findViewById(R.id.toolbar);
+        binding = ActivityMenuBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        drawerLayout = binding.drawerLayout;
+        MaterialToolbar toolbar = binding.toolbar;
         setSupportActionBar(toolbar);
 
         drawerToggle = new ActionBarDrawerToggle(
@@ -52,8 +55,8 @@ public class MenuActivity extends AppCompatActivity {
         );
         drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
+        NavigationView navigationView = binding.navigationView;
 
-        NavigationView navigationView = findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) {
                 showFragment(new HomeFragment());
