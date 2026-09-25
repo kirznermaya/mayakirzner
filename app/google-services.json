@@ -13,7 +13,20 @@
           "package_name": "com.example.mayakirzner"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "263573775849-m3ubb4ve60e518j069ip5qs5al2qil09.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mayakirzner",
+            "certificate_hash": "2c9da7f503733636112fa461e087714094df3ee0"
+          }
+        },
+        {
+          "client_id": "263573775849-88nev69agmiskocr1mf1rffeiqpccn0h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDfko-yfy8CdzYPUR7zYazxnTsxpuduGv8"
@@ -21,7 +34,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "263573775849-88nev69agmiskocr1mf1rffeiqpccn0h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
