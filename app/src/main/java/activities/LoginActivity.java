@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import com.example.mayakirzner.databinding.ActivityLoginBinding;
 
 import android.text.TextUtils;
 import android.widget.Button;
@@ -26,7 +27,6 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mayakirzner.R;
-import activities.MenuActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,11 +34,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String PREFS_NAME = "PREFS_NAME";
     private static final String KEY_STAY_CONNECT = "stayConnect";
     private SharedPreferences settings;
-    private CheckBox cBstayconnect;
-    private EditText eTemail;
-    private EditText eTpass;
-    private Button btnLogin;
-    private Button btnGoogleSignIn;
+    private ActivityLoginBinding binding;
     private boolean loginInProgress;
 
 
@@ -46,32 +42,31 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        // БЫЛО:
+        // setContentView(R.layout.activity_login);
+        // ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), ...);
+
+        // СТАЛО:
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
         settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        initViews();
         FBRef.initializeGoogleSignIn(this);
         setLoginInProgress(false);
 
         // SharedPreferences demo: restore and save the "remember me" checkbox.
-        cBstayconnect.setChecked(settings.getBoolean(KEY_STAY_CONNECT, false));
-        cBstayconnect.setOnCheckedChangeListener((buttonView, isChecked) ->
+        binding.cBstayconnect.setChecked(settings.getBoolean(KEY_STAY_CONNECT, false));
+        binding.cBstayconnect.setOnCheckedChangeListener((buttonView, isChecked) ->
                         settings.edit().putBoolean(KEY_STAY_CONNECT, isChecked).apply()
         );
 
     }
-    private void initViews() {
-        cBstayconnect = findViewById(R.id.cBstayconnect);
-        eTemail = findViewById(R.id.eTemail);
-        eTpass = findViewById(R.id.eTpass);
-        btnLogin = findViewById(R.id.btn);
-        btnGoogleSignIn = findViewById(R.id.btnGoogleSignIn);
-    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -85,18 +80,18 @@ public class LoginActivity extends AppCompatActivity {
     public void onLoginClick(View view) {
         if (loginInProgress) return;
 
-        String email = eTemail.getText().toString().trim();
-        String password = eTpass.getText().toString();
+        String email = binding.eTemail.getText().toString().trim();
+        String password = binding.eTpass.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            eTemail.setError("Enter e-mail");
-            eTemail.requestFocus();
+            binding.eTemail.setError("Enter e-mail");
+            binding.eTemail.requestFocus();
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            eTpass.setError("Enter password");
-            eTpass.requestFocus();
+            binding.eTpass.setError("Enter password");
+            binding.eTpass.requestFocus();
             return;
         }
 
@@ -112,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                             return;
                         }
                         FBRef.getUser(user);
-                        settings.edit().putBoolean(KEY_STAY_CONNECT, cBstayconnect.isChecked()).apply();
+                        settings.edit().putBoolean(KEY_STAY_CONNECT, binding.cBstayconnect.isChecked()).apply();
                         Toast.makeText(this, "Login success", Toast.LENGTH_SHORT).show();
                         openMenu();
                         return;
@@ -125,9 +120,9 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void setLoginInProgress(boolean inProgress) {
         loginInProgress = inProgress;
-        btnLogin.setEnabled(!inProgress);
-        btnLogin.setText(inProgress ? "Logging in..." : "Login");
-        btnGoogleSignIn.setEnabled(!inProgress);
+        binding.btn.setEnabled(!inProgress);
+        binding.btn.setText(inProgress ? "Logging in..." : "Login");
+        binding.btnGoogleSignIn.setEnabled(!inProgress);
     }
 
     private void openMenu() {
@@ -192,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
                         }
 
                         FBRef.getUser(currentUser);
-                        settings.edit().putBoolean(KEY_STAY_CONNECT, cBstayconnect.isChecked()).apply();
+                        settings.edit().putBoolean(KEY_STAY_CONNECT, binding.cBstayconnect.isChecked()).apply();
                         Toast.makeText(this, "Google login success", Toast.LENGTH_SHORT).show();
                         openMenu();
                         return;
