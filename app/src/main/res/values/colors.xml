@@ -2,4 +2,13 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#1F5A83</color>
+    <color name="primary_dark">#173F5C</color>
+    <color name="accent">#E6843A</color>
+    <color name="toolbar_background">#1F5A83</color>
+
+    <color name="board_cell_background">#FFFFFFFF</color>
+    <color name="board_cell_stroke">#FF222222</color>
+    <color name="board_cell_text">#FF111111</color>
 </resources>

@@ -16,9 +16,11 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorSurface"
+            android:background="@color/toolbar_background"
             android:theme="@style/ThemeOverlay.Material3.ActionBar"
-            app:title="@string/app_name" />
+            app:navigationIconTint="@color/white"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/white" />
 
         <FrameLayout
             android:id="@+id/content_container"

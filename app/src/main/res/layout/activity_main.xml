@@ -40,6 +40,9 @@
             android:layout_height="100dp"
             android:tag="0,0"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -48,6 +51,9 @@
             android:layout_height="100dp"
             android:tag="0,1"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -56,6 +62,9 @@
             android:layout_height="100dp"
             android:tag="0,2"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -64,6 +73,9 @@
             android:layout_height="100dp"
             android:tag="1,0"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -72,6 +84,9 @@
             android:layout_height="100dp"
             android:tag="1,1"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -80,6 +95,9 @@
             android:layout_height="100dp"
             android:tag="1,2"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -88,6 +106,9 @@
             android:layout_height="100dp"
             android:tag="2,0"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -96,6 +117,9 @@
             android:layout_height="100dp"
             android:tag="2,1"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
         <Button
@@ -104,6 +128,9 @@
             android:layout_height="100dp"
             android:tag="2,2"
             android:onClick="onCellClick"
+            android:background="@drawable/bg_square_button"
+            android:backgroundTint="@null"
+            android:textColor="@color/board_cell_text"
             android:textSize="24sp" />
 
     </GridLayout>
