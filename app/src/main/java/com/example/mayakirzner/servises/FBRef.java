@@ -17,6 +17,7 @@ public final class FBRef {
     public static final FirebaseAuth refAuth = FirebaseAuth.getInstance();
     public static final FirebaseDatabase FBDB = FirebaseDatabase.getInstance();
     public static final DatabaseReference refUsers = FBDB.getReference("Users");
+    public static final DatabaseReference refGames = FBDB.getReference("TicTacToeRtdb").child("games");
 
     public static GoogleSignInClient googleSignInClient;
     public static String uid;

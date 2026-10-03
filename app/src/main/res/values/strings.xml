@@ -5,7 +5,21 @@
     <string name="menu_home">Home</string>
     <string name="menu_local_game">Local Game</string>
     <string name="menu_profile">Profile</string>
-    <string name="menu_rtdb_prep">RTDB Game (Prep)</string>
+    <string name="menu_rtdb_prep">RTDB Game</string>
+
+    <string name="rtdb_game_name_hint">Game name</string>
+    <string name="rtdb_start_game">Start game and wait</string>
+    <string name="rtdb_available_games">Available games</string>
+    <string name="rtdb_no_games">No games have been published yet.</string>
+    <string name="rtdb_room_waiting">waiting</string>
+    <string name="rtdb_room_playing">playing</string>
+    <string name="rtdb_room_label">%1$s — %2$s</string>
+    <string name="rtdb_game_name_required">Enter a game name</string>
+    <string name="rtdb_login_required">Log in before opening an RTDB game</string>
+    <string name="rtdb_game_published">Game published</string>
+    <string name="rtdb_read_failed">Firebase read failed: %1$s</string>
+    <string name="rtdb_write_failed">Firebase write failed: %1$s</string>
+
     <string name="login_title">Login</string>
     <string name="login_email">User name / e-mail</string>
     <string name="login_password">Password</string>
