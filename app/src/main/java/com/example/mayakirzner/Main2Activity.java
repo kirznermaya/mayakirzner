@@ -63,6 +63,10 @@ public class Main2Activity extends AppCompatActivity {
         gamesReference = FBRef.refGames;
         model = new TicTacToeModel();
 
+        if (binding.toolbar != null) {
+            binding.toolbar.setNavigationOnClickListener(v -> finish());
+        }
+
         setupRoomSpinner();
         binding.buttonStartGame.setOnClickListener(view -> startGameAndWait());
         binding.buttonOpenGame.setOnClickListener(view -> openSelectedGame());

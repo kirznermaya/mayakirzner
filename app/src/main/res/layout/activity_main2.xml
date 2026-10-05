@@ -1,159 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!-- Секция Лобби: создание и выбор комнат -->
-    <LinearLayout
-        android:id="@+id/lobbyLayout"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/toolbar_background"
+        app:navigationIcon="?attr/homeAsUpIndicator"
+        app:navigationIconTint="@color/white"
+        app:title="RTDB Game"
+        app:titleTextColor="@color/white" />
 
-        <EditText
-            android:id="@+id/editGameName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/rtdb_game_name_hint"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:singleLine="true" />
-
-        <Button
-            android:id="@+id/buttonStartGame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/rtdb_start_game" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/rtdb_available_games"
-            android:textStyle="bold" />
-
-        <Spinner
-            android:id="@+id/spinnerGames"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="48dp" />
-
-        <TextView
-            android:id="@+id/textNoGames"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rtdb_no_games" />
-
-        <Button
-            android:id="@+id/buttonOpenGame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/rtdb_open_game" />
-    </LinearLayout>
-
-    <!-- Секция Игры: название, статус и игровое поле (скрыто по умолчанию) -->
     <LinearLayout
-        android:id="@+id/gameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textGameName"
-            android:layout_width="wrap_content"
+        <!-- Секция Лобби: создание и выбор комнат -->
+        <LinearLayout
+            android:id="@+id/lobbyLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:textStyle="bold" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textGameStatus"
-            android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/editGameName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/rtdb_game_name_hint"
+                android:textColor="@color/board_cell_text"
+                android:textColorHint="@color/primary_dark"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/buttonStartGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/white"
+                android:text="@string/rtdb_start_game" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/rtdb_available_games"
+                android:textColor="@color/board_cell_text"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerGames"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/textNoGames"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/board_cell_text"
+                android:text="@string/rtdb_no_games" />
+
+            <Button
+                android:id="@+id/buttonOpenGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/primary"
+                android:textColor="@color/white"
+                android:text="@string/rtdb_open_game" />
+        </LinearLayout>
+
+        <!-- Секция Игры: название, статус и игровое поле (скрыто по умолчанию) -->
+        <LinearLayout
+            android:id="@+id/gameLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="16dp" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
 
-        <GridLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="3">
+            <TextView
+                android:id="@+id/textGameName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/board_cell_text"
+                android:textSize="22sp"
+                android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button00"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="0,0"
-                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/textGameStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/primary_dark"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="16dp" />
 
-            <Button
-                android:id="@+id/button01"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="0,1"
-                android:textSize="24sp" />
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:rowCount="3">
 
-            <Button
-                android:id="@+id/button02"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="0,2"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button00"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="0,0"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="1,0"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button01"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="0,1"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button11"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="1,1"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button02"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="0,2"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button12"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="1,2"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button10"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="1,0"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button20"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="2,0"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button11"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="1,1"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button21"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="2,1"
-                android:textSize="24sp" />
+                <Button
+                    android:id="@+id/button12"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="1,2"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
 
-            <Button
-                android:id="@+id/button22"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:onClick="onCellClick"
-                android:tag="2,2"
-                android:textSize="24sp" />
-        </GridLayout>
+                <Button
+                    android:id="@+id/button20"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="2,0"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button21"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="2,1"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
+
+                <Button
+                    android:id="@+id/button22"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:layout_margin="3dp"
+                    android:onClick="onCellClick"
+                    android:tag="2,2"
+                    android:background="@drawable/bg_square_button"
+                    android:backgroundTint="@null"
+                    android:textColor="@color/board_cell_text"
+                    android:textSize="24sp" />
+            </GridLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
